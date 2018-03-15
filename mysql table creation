@@ -1,0 +1,28 @@
+create table customers (
+customerid int auto_increment not null,
+address varchar(40) not null,
+name varchar (20),
+primary key (customerid));
+
+create table orders (
+orderid int auto_increment,
+deliverydate date,
+customerid int not null,
+orderquanitiy int,
+deliveredquantity int,
+cookieid int not null,
+primary key (orderid),
+foreign key (customerid) references customers(customerid) on delete cascade,
+foregin key (cookieid) references cookies(cookieid) on delete cascade);
+
+create table pallets (
+palletid int auto_increment,
+productiondate date,
+cookieid int,
+blocked boolean,
+orderid int,
+primary key (palletid),
+foreign key (cookieid) references cookies(cookieid) on delete no action,
+foreign key (orderid) references orders(orderid) on delete no action);
+
+Vi skulle väl designa om cookies och recipies har jag för mig?
