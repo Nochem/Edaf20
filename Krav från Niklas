@@ -1,0 +1,17 @@
+Hej,
+
+Här kommer en lista av funktioner som det grafiska gränssnittet i databasprojektet ska innehålla.
+
+mvh, Niklas
+
+Funktionalitet:
+* Produktion av lastpallar
+  - Producera lastpall givet en produkt och uppdatera råvarorna enligt receptet
+* Sökning av lastpallar enligt
+  - ID-nummer
+  - Produkt
+  - Producerad inom ett visst datumintervall
+  - Levererade till en angiven kund
+  - Blockerad
+* Blockering av lastpallar
+  - Anges exempelvis via ID-nummer
