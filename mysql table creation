@@ -1,19 +1,24 @@
 create table customers (
-customerid int auto_increment not null,
+customerid int auto_increment,
 address varchar(40) not null,
 name varchar (20),
 primary key (customerid));
 
 create table orders (
 orderid int auto_increment,
-deliverydate date,
+deliverydate date not null,
 customerid int not null,
+primary key (orderid),
+foreign key (customerid) references customers(customerid));
+
+create table orderdetails (
+orderid int not null,
+cookieid int not null,
 orderquanitiy int,
 deliveredquantity int,
-cookieid int not null,
-primary key (orderid),
-foreign key (customerid) references customers(customerid) on delete cascade,
-foregin key (cookieid) references cookies(cookieid) on delete cascade);
+primary key (orderid, cookieid),
+foregin key (cookieid) references cookies(cookieid),
+foregin key (orderid) references orders(orderid));
 
 create table pallets (
 palletid int auto_increment,
@@ -23,6 +28,26 @@ blocked boolean,
 orderid int,
 primary key (palletid),
 foreign key (cookieid) references cookies(cookieid) on delete no action,
-foreign key (orderid) references orders(orderid) on delete no action);
+foreign key (orderid) references orders(orderid) on delete update);
 
-Vi skulle väl designa om cookies och recipies har jag för mig?
+create table cookies (
+cookieid int auto_increment,
+cookiename varchar(20) not null,
+primary  key (cookieid));
+
+create table recipies (
+cookieid int not null,
+ingredientid int not null,
+amount int,
+unit varchar(10),
+primary key (cookieid, ingredientid),
+foreign key (cookieid) references cookies(cookieid),
+foreign key (ingredientid) references ingredients(ingredientid));
+
+create table ingredients (
+ingredientid int auto_increment,
+name varchar(20),
+sotredquantity int,
+lastdeliverydate date,
+lastdeliveryquantity int,
+primary key (ingredientid));
