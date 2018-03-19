@@ -1,9 +1,7 @@
-Customers (CustomerId, Address, Name)
-Orders (OrderId, DeliveryDate, OrderedQ, DeliveredQ, CookieID)
-
-Just nu kan en order bara innehålla en typ av kaka, borde fixas
-
-Pallets (PalletID, ProductionDate, CookieID, Blocked, OrderID)
-Cookies (CookieID, CookieName)
-Recipies (CookieID, IngredientID, Amount, Unit)
-Ingredients (IngredientID, StoredQuantity, LastDeliveryDate, LastDeliveryQuantity)
+Customers (CustomerID (pk), Address, Name)
+Orders (OrderID (pk), DeliveryDate)
+OrderDetails(OrderID  (pk)(fk), CookieID (pk)(fk), QuantityOrdered, QuantityDelivered)
+Pallets (PalletID  (pk), ProductionDate, CookieID (fk), Blocked, OrderID (fk))
+Cookies (CookieID (pk), CookieName)
+Recipies (CookieID (pk)(fk), IngredientID (pk)(fk), Amount, Unit)
+Ingredients (IngredientID (pk), StoredQuantity, LastDeliveryDate, LastDeliveryQuantity)
