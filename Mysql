@@ -1,0 +1,28 @@
+New customer:
+insert into customers (address, name) 
+values (ADDRESS, NAME);
+
+
+
+New order:
+insert into orders (CustomerID, Deliverydate) 
+values ((select CustomerID from customers where name='NAME'), DATE);
+
+insert into orderdetails (quantityordered, cookieid, orderid)
+values (QUANTITY, (select cookieid from cookies where cookiename='COOKIENAME'), (select orderid from orders order by orderid desc limit 1));
+
+
+
+
+New pallet:
+insert into pallets (productiondate, cookieid) 
+values (CURRENTDATE, (select cookieid from cookies where cookiename='COOKIENAME'));
+
+
+
+New recipie:
+insert into cookies (cookiename) 
+values (NAME);
+
+insert into recipies (cookieid, ingredientid, amount, unit) 
+values ((select cookieid from cookies order by cookieid desc limit 1), 
