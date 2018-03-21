@@ -8,21 +8,25 @@ New order:
 insert into orders (CustomerID, Deliverydate) 
 values ((select CustomerID from customers where name='NAME'), DATE);
 
-insert into orderdetails (quantityordered, cookieid, orderid)
-values (QUANTITY, (select cookieid from cookies where cookiename='COOKIENAME'), (select orderid from orders order by orderid desc limit 1));
+insert into orderdetails (quantityordered, cookiename, orderid)
+values (QUANTITY, COOKIENAME, (select orderid from orders order by orderid desc limit 1)); //Should have some check to make sure cookiename exists
 
 
 
 
 New pallet:
-insert into pallets (productiondate, cookieid) 
-values (CURRENTDATE, (select cookieid from cookies where cookiename='COOKIENAME'));
+insert into pallets (productiondate, cookiename) 
+values (CURRENTDATE, COOKIENAME); //Again, exist check.
 
 
 
 New recipie:
-insert into cookies (cookiename) 
-values (NAME);
+insert into cookies (cookiename, ingredientname, amount, unit)  //This will have to be repeated for each ingredient.
+values (NAME, INGREDIENT, AMOUNT, UNIT);
 
-insert into recipies (cookieid, ingredientid, amount, unit) 
-values ((select cookieid from cookies order by cookieid desc limit 1), 
+
+
+
+New ingredient:
+insert into ingredients (ingredientname, storedquantity, lastdeliverydate, lastdeliveryquantity)
+values (NAME, AMOUNT, DATE, AMOUNT);
