@@ -1,0 +1,11 @@
+In the system it's neccesary to be able to:
+
+Add a new customer.
+Add a new order.
+Add a new recipie.
+Produce a new pallet.
+Add ingredients to storage.
+Subtract ingredients from storage upon creation of a pallet.
+Block pallets from sale.
+Remove a recipie.
+Make deliveries of pallets. (Adding orderID to a pallet and increasing Quantity delivered in orderDetails).
