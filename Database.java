@@ -1,3 +1,5 @@
+package connection;
+
 import java.sql.*;
 
 public class Database {
