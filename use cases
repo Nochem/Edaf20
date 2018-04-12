@@ -10,3 +10,9 @@ Block pallets from sale.
 Remove a recipie.
 Make deliveries of pallets. (Adding orderID to a pallet and increasing Quantity delivered in orderDetails).
 Add new types of ingredients.
+
+-
+Show all cookies
+Show all ingredients
+Show all pallets
+Show all customers
