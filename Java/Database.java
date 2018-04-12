@@ -25,7 +25,6 @@ public class Database {
 		return true;
 	}
 
-	
 	public void closeConnection() {
 		try {
 			if (conn != null)
@@ -38,8 +37,22 @@ public class Database {
 		System.err.println("Database connection closed.");
 	}
 
-
 	public boolean isConnected() {
 		return conn != null;
 	}
+
+	//Lists all cookies, customers, ingredients, orders etc
+	//Open to sql-injections.
+	public ResultSet getCookies(String name, String table) {
+		String str = "select distinct "+name+" from "+table+";";
+		ResultSet rs = null;
+		try {
+			Statement statement = conn.createStatement();
+			rs = statement.executeQuery(str);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return rs;
+	}
+
 }
