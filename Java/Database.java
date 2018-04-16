@@ -43,7 +43,7 @@ public class Database {
 
 	//Lists all cookies, customers, ingredients, orders etc
 	//Open to sql-injections.
-	public ResultSet getCookies(String name, String table) {
+	public ResultSet get(String name, String table) {
 		String str = "select distinct "+name+" from "+table+";";
 		ResultSet rs = null;
 		try {
