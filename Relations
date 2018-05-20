@@ -3,4 +3,4 @@ Orders (OrderID (pk), CustomerID(fk), DeliveryDate)
 OrderDetails(OrderID  (pk)(fk), CookieName (pk)(fk), QuantityOrdered, QuantityDelivered)
 Pallets (PalletID  (pk), ProductionDate, CookieName (fk), Blocked, OrderID (fk))
 Cookies (CookieName (pk), IngredientName (fk), Amount, Unit)
-Ingredients (IngredientName (pk), StoredQuantity, LastDeliveryDate, LastDeliveryQuantity)
+Ingredients (IngredientName (pk), StoredQuantity, LastDeliveryDate, LastDeliveryQuantity) //Added unit
