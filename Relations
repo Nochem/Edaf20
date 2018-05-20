@@ -2,5 +2,5 @@ Customers (CustomerID (pk), Address, Name) //Removed CustomerID, used Name as pk
 Orders (OrderID (pk), CustomerID(fk), DeliveryDate)
 OrderDetails(OrderID  (pk)(fk), CookieName (pk)(fk), QuantityOrdered, QuantityDelivered)
 Pallets (PalletID  (pk), ProductionDate, CookieName (fk), Blocked, OrderID (fk))
-Cookies (CookieName (pk), IngredientName (fk), Amount, Unit)
+Cookies (CookieName (pk), IngredientName (fk), Amount, Unit) //added ingredientname to pk
 Ingredients (IngredientName (pk), StoredQuantity, LastDeliveryDate, LastDeliveryQuantity) //Added unit
