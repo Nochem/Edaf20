@@ -1,0 +1,46 @@
+create table customers (
+customerid int auto_increment,
+address varchar(40) not null,
+name varchar (20),
+primary key (customerid));
+
+create table orders (
+orderid int auto_increment,
+deliverydate date not null,
+customerid int not null,
+primary key (orderid),
+foreign key (customerid) references customers(customerid));
+
+create table ingredients (
+ingredientname varchar(20),
+storedquantity int,
+lastdeliverydate date,
+lastdeliveryquantity int,
+primary key (ingredientname));
+
+create table cookies (
+cookiename varchar(20) not null,
+ingredientname varchar(20),
+amount int,
+unit varchar(10),
+primary  key (cookiename, ingredientname),
+foreign key (ingredientname) references ingredients(ingredientname));
+
+create table orderdetails (
+orderid int not null,
+cookiename varchar(20),
+orderquanitiy int,
+deliveredquantity int,
+primary key (orderid),
+foreign key (cookiename) references cookies(cookiename),
+foreign key (orderid) references orders(orderid));
+
+create table pallets (
+palletid int auto_increment,
+productiondate date,
+cookiename varchar(20),
+blocked boolean,
+orderid int,
+primary key (palletid),
+foreign key (cookiename) references cookies(cookiename) on delete no action,
+foreign key (orderid) references orders(orderid) on delete no action);
